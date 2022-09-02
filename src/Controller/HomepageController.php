@@ -14,13 +14,7 @@ class HomepageController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function homepage(): Response
     {
-        $user = new User();
-        $name = '';
-        if ($user->getUsername() === null) {
-            $name = 'Unknown';
-        } else if ($user->getUsername() !== null) {
-            $name = $user->getUsername();
-        }
+        $name = 'Unknown';
         return $this->render('homepage/homepage.html.twig', [
             'name' => $name,
         ]);
