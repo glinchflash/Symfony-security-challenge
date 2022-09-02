@@ -18,8 +18,15 @@
     </style>
 
     <div class="example-wrapper">
-        <h1>Hello {{ name }}! ✅
-        </h1>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h1> Hello {{ app.user.username }}! ✅</h1>
+            <button><a href="{{ path('app_logout') }}">Logout</a></button>
+            <button><a href="{{ path('app_admin') }}">Admin panel</a></button>
+                {%else%}
+                    <button><a href="{{ path('app_login') }}">login</a></button>
+                    <button><a href="{{ path('app_register') }}">Register</a></button>
+                   <h1> Hello {{ name }}! ✅</h1>
+            {% endif %}
     </div>
 
 {% endblock %}
